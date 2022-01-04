@@ -8,7 +8,7 @@ body {
     flex-direction: column;
 }
 
-/*----Blue Top Section----*/
+/*----Header Section----*/
 
 .header-box {
     background-color: #1F2937;
@@ -123,6 +123,7 @@ li {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    gap: 8px;
     width: 25%;
 }
 
@@ -148,6 +149,68 @@ li {
     background-color: #E5E7EB;
     display: flex;
     flex-direction: column;
+    padding: 64px 256px;
+}
+
+.quote-text {
+    color: #1F2937;
+    font-size: 36px;
+    font-style: italic;
+    font-weight: lighter;
+}
+
+.quote-source {
+    color: #1F2937;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: right;
+}
+
+/*----Signup Section----*/
+
+.signup-segment {
+    background-color: #F9FAF8;
+    padding: 64px 128px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.signup-box {
+    background-color: #3882F6;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-radius: 8px;
+    padding: 32px 64px;
+}
+
+.signup-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.signup-title {
+    color: #F9FAF8;
+    font-size: 20px;
+}
+
+.signup-description {
+    color: #E5E7EB;
+    font-size: 16px;
+}
+
+.signup-2 {
+    border: 2px;
+    border-color: #F9FAF8;
+    border-style: solid;
+    border-radius: 8px;
+    color: #F9FAF8;
+    background-color: #3882F6;
+    padding: 8px 16px;
+    font-weight: bold;
+    align-self: flex-end;
 }
 
 /*----Footer----*/
