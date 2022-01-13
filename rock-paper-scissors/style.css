@@ -1,0 +1,51 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 36px;
+}
+
+.score {
+    margin: 36px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.score-text {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.choices {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 64px;
+}
+
+button {
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid black;
+    color: black;
+    background-color: white;
+    transition:all 0.07s;
+}
+
+.clicked {
+    background-color: gray;
+}
+
+.msg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 16px;
+}

@@ -36,7 +36,14 @@ function playRound(playerSelection, computerSelection)
     switch (playerSelection)
     {
         case "scissors":
-            playerValue = 1;
+            if (computerValue == 3)
+            {
+                playerValue = 4;
+            }
+            else
+            {
+                playerValue = 1;
+            }
             break;
         case "paper":
             playerValue = 2;
@@ -53,65 +60,123 @@ function playRound(playerSelection, computerSelection)
             break;
     }
 
-    if (playerValue > computerValue)
+    let msg = document.createElement("div");
+    let msgBox = document.querySelector(".msg");
+    while (msgBox.firstChild)
+    {
+        msgBox.removeChild(msgBox.firstChild);
+    }
+
+    if (playerValue < computerValue)
     {
         let winMessage = "You Win! " + playerSelection + " beats " + computerSelection;
 
-        console.log(winMessage);
+        msg.textContent = winMessage;
+        msgBox.appendChild(msg);
 
         return 0;
     }
-    else if (playerValue < computerValue)
+    else if (playerValue > computerValue)
     {
         let loseMessage = "You Lose! " + computerSelection + " beats " + playerSelection;
         
-        console.log(loseMessage);
+        msg.textContent = loseMessage;
+        msgBox.appendChild(msg);
 
         return 1;
     }
-    else if (playerValue == computerValue)
+    else
     {
-        console.log("Tie!");
+        msg.textContent = "Tie!";
+        msgBox.appendChild(msg);
 
         return 2;
     }
 }
 
-function game()
+function game(choice)
 {
-let playerScore = 0;
-let computerScore = 0;
-let result = 0;
+    let playerScoreDisplay = document.querySelector(".player-score");
+    let computerScoreDisplay = document.querySelector(".cp-score");
 
-    for (let round = 0; round < 5; round++)
+    playerScoreDisplay.textContent = playerScore;
+    computerScoreDisplay.textContent = computerScore;
+
+    let result = 0;
+
+    let playerSelection = choice;
+    let computerSelection = computerPlay();
+
+    result = playRound(playerSelection, computerSelection);
+    
+    switch (result)
     {
-        let playerSelection = prompt("Choose scissors, paper, or rock: ", "choice here");
-        playerSelection = playerSelection.toLowerCase();
-        let computerSelection = computerPlay();
+        case 0:
+            playerScore++;
+            break;
+        case 1:
+            computerScore++;
+            break;
+        case 2:
+            break;
+        default:
+            console.log("This should never happen");
+            break;
+    }
 
-        result = playRound(playerSelection, computerSelection);
-        
-        switch (result)
+    playerScoreDisplay.textContent = playerScore;
+    computerScoreDisplay.textContent = computerScore;
+
+    if (playerScore == 5 || computerScore == 5)
+    {
+        let msg = document.createElement("div");    
+        let msgBox = document.querySelector(".msg");
+        while (msgBox.firstChild)
         {
-            case 0:
-                playerScore++;
-                break;
-            case 1:
-                computerScore++;
-                break;
-            default:
-                break;
+            msgBox.removeChild(msgBox.firstChild);
         }
-    }
 
-    if (playerScore > computerScore)
-    {
-        console.log("You win the game!");
-    }
-    else
-    {
-        console.log("You lose idiot!");
+        if (playerScore > computerScore)
+        {
+            msg.textContent = "You win the game!";
+            msgBox.appendChild(msg);
+        }
+        else
+        {
+            msg.textContent = "You lose idiot!";
+            msgBox.appendChild(msg);
+        }
     }
 }
 
-game();
+
+let playerScore = 0;
+let computerScore = 0;
+
+const scissors = document.querySelector("#scissors");
+const paper = document.querySelector("#paper");
+const rock = document.querySelector("#rock");
+
+scissors.addEventListener("click", function (e) {
+    game("scissors");
+    scissors.classList.add("clicked");
+});
+
+paper.addEventListener("click", function (e) {
+    game("paper");
+    paper.classList.add("clicked");
+});
+
+rock.addEventListener("click", function (e) {
+    game("rock");
+    rock.classList.add("clicked");
+});
+
+function removeTransition(e) {
+    scissors.classList.remove("clicked");
+    paper.classList.remove("clicked");
+    rock.classList.remove("clicked");
+}
+
+const buttons = document.querySelectorAll("button");
+buttons.forEach(button => button.addEventListener("transitionend", removeTransition));
