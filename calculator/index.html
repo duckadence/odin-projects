@@ -1,4 +1,4 @@
-<DOCTYPE! html>
+<!DOCTYPE html>
 
 <html>
     <head>
@@ -9,7 +9,14 @@
     <body>
         <div class="calculator">
             <div id="display">
-                0
+                <div id="upper-display">
+                </div>
+                <div id="lower-display">
+                </div>
+            </div>
+            <div class="edit">
+                <button id="clear">C</button>
+                <button id="delete">del</button>
             </div>
             <div class="buttons">
                 <div class="column">
@@ -22,7 +29,7 @@
                     <button class="number">2</button>
                     <button class="number">5</button>
                     <button class="number">8</button>
-                    <button class="number">.</button>
+                    <button class="number" id="decimal">.</button>
                 </div>
                 <div class="column">
                     <button class="number">3</button>
@@ -37,7 +44,6 @@
                     <button class="operation">+</button>
                 </div>
             </div>
-            <button id="clear">C</button>
         </div>
         <script src="script.js"></script>
     </body>
