@@ -132,12 +132,20 @@ function addOperator(e)
     if (state <= 1)
     {
         operator = op;
-    }
-    else (state > 1)
-    {
-        num1 = operate(num1, num2, operator);
-        operator = op;
         num2 = '';
+    }
+    else if(state > 1)
+    {
+        if (num2 == '')
+        {
+            operator = op;
+        }
+        else
+        {
+            num1 = operate(num1, num2, operator);
+            operator = op;
+            num2 = '';
+        }
     }
     state = 3;
     buffer.textContent = num1 + ' ' + op;
@@ -163,22 +171,26 @@ del.addEventListener('click', function (e) {
     {
         if (num1.length == 0)
         {
-            num1 = '0';
+            num1 = '';
+            result.textContent = '0';
         }
         else
         {
             num1 = num1.substring(0, num1.length - 1);
+            result.textContent = num1;
         }
     }
     else
     {
         if (num2.length == 0)
         {
-            num2 = '0';
+            num2 = '';
+            result.textContent = '0';
         }
         else
         {
             num2 = num2.substring(0, num2.length - 1);
+            result.textContent = num2;
         }
     }
 });
