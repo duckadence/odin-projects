@@ -1,3 +1,3 @@
 #The Odin Project
 
-Foundations Program Projects
+Projects from following The Odin Project courses
